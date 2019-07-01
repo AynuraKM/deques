@@ -17,6 +17,7 @@ func main() {
 	fmt.Println(dq)
 	fmt.Println(dq.is_empty)
 	fmt.Println(dq.size)
+	fmt.Println(dq.peek(true))
 }
 
 type dequeue struct {
@@ -68,6 +69,16 @@ func (dq *dequeue) is_empty() bool{
 func (dq *dequeue) size() int{
 	l := len(dq.values)
 	return l
+}
+
+func (dq *dequeue) peek(value bool) int {
+	var node int
+	if value == true {
+		node = dq.values[len(dq.values)-1]
+	} else {
+		node = dq.values[0]
+	}
+	return node
 }
 
 
