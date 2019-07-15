@@ -34,7 +34,7 @@ func (dq *dequeue) remove_rear() int {
 	return val
 }
 
-func (dq *dequeue) add_front(values int) {
+func (dq dequeue) add_front(values int) {
 	var n [100]int
 	for i:=0; i<len(dq.values) ; i++  {
 		n[i+1]=dq.values[i]
