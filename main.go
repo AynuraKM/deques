@@ -13,7 +13,7 @@ func main() {
 	fmt.Println(dq)
 	fmt.Println(dq.remove_rear)
 	fmt.Println(dq.remove_front)
-	dq.add_front(125)
+	dq.add_front("hello")
 	fmt.Println(dq)
 	fmt.Println(dq.is_empty)
 	fmt.Println(dq.size)
@@ -21,21 +21,21 @@ func main() {
 }
 
 type dequeue struct {
-	values []int
+	values []interface{}
 }
 
-func (dq *dequeue) add_rear(value int) {
+func (dq *dequeue) add_rear(value interface{}) {
 	dq.values = append(dq.values, value)
 }
 
-func (dq *dequeue) remove_rear() int {
+func (dq *dequeue) remove_rear() interface{} {
 	val := dq.values[len(dq.values)-1]
 	dq.values = dq.values[:len(dq.values)-1]
 	return val
 }
 
-func (dq dequeue) add_front(values int) {
-	var n [100]int
+func (dq dequeue) add_front(values interface{}) {
+	var n [100]interface{}
 	for i:=0; i<len(dq.values) ; i++  {
 		n[i+1]=dq.values[i]
 	}
@@ -46,9 +46,9 @@ func (dq dequeue) add_front(values int) {
 	}
 }
 
-func (dq *dequeue) remove_front() int {
+func (dq *dequeue) remove_front() interface{} {
 	val := dq.values[0]
-	var n [100]int
+	var n [100]interface{}
 	for i := 1; i < len(dq.values); i++ {
 		n[i-1] = dq.values[i]
 	}
@@ -71,8 +71,8 @@ func (dq *dequeue) size() int{
 	return l
 }
 
-func (dq *dequeue) peek(value bool) int {
-	var node int
+func (dq *dequeue) peek(value bool) interface{} {
+	var node interface{}
 	if value == true {
 		node = dq.values[len(dq.values)-1]
 	} else {
